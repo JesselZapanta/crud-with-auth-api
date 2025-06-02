@@ -15,6 +15,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 Route::middleware(['auth:sanctum'])->group(function() {
     Route::get('/admin/user', [AdminUserController::class, 'index']);
+    Route::get('/admin/user/show/{id}', [AdminUserController::class, 'show']);
     Route::post('/admin/user/store', [AdminUserController::class, 'store']);
     Route::put('/admin/user/update/{id}', [AdminUserController::class, 'update']);
     Route::delete('/admin/user/destroy/{id}', [AdminUserController::class, 'destroy']);

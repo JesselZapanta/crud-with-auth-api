@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useCallback, useEffect, useState } from "react";
+import Loader from "../Components/Loader";
 
 export const AppContext = createContext();
 
@@ -37,7 +38,7 @@ export default function AppProvider({ children }) {
 
     return (
         <AppContext.Provider value={{ token, setToken, user, setUser }}>
-            {loading ? <div>Loading...</div> : children}
+            {loading ? <Loader /> : children}
         </AppContext.Provider>
     );
 }

@@ -38,6 +38,15 @@
     .primary-btn {
         @apply flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait;
     }
+    .action-primary {
+        @apply flex justify-center rounded-md bg-blue-500 py-1 px-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait;
+    }
+    .action-danger {
+        @apply flex justify-center rounded-md bg-red-500 py-1 px-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait;
+    }
+    .secondary-btn {
+        @apply flex w-full justify-center rounded-md bg-slate-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-slate-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait;
+    }
     .text-link {
         @apply font-semibold text-blue-500 hover:text-blue-600;
     }
@@ -54,7 +63,7 @@
         @apply w-full text-sm text-left rounded-md shadow-lg overflow-hidden mb-6 table-auto bg-white;
     }
     thead {
-        @apply text-xs uppercase font-medium border-b border-slate-100 text-slate-600;
+        @apply text-xs uppercase font-bold border-b bg-blue-200  border-slate-100 text-slate-600;
     }
     tbody tr {
         @apply hover:bg-slate-100 w-full p-0;

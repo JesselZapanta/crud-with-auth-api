@@ -10,6 +10,7 @@ import AuthenticatedLayout from './Pages/Layout/AuthenticatedLayout';
 import UserIndex from './Pages/Admin/User/UserIndex';
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import GuestRoutes from "./utils/GuestRoutes";
+import UserCreateUpdate from "./Pages/Admin/User/UserCreateUpdate";
 function App() {
 
     return (
@@ -35,6 +36,10 @@ function App() {
                         <Route
                             path="/user-management"
                             element={<UserIndex />}
+                        />
+                        <Route
+                            path="/user-create-update/:id?"//create and update
+                            element={<UserCreateUpdate />}
                         />
                     </Route>
                 </Route>

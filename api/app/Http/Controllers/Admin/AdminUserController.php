@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -13,7 +14,9 @@ class AdminUserController extends Controller
 {
     public function index()
     {
-        return User::orderBy('id', 'desc')->get();
+        return User::where('id', '!=', Auth()->user()->id)
+        ->orderBy('id', 'desc')
+        ->get();
     }
 
     public function store(Request $request)
@@ -38,6 +41,11 @@ class AdminUserController extends Controller
         return response()->json([
             'status' => 'created'
         ], 200);
+    }
+
+    public function show($id)
+    {
+        return User::FindOrFail($id);
     }
 
     public function update(Request $request, $id)
