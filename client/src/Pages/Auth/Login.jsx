@@ -1,11 +1,11 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../Context/AppContext";
 
 export default function Login() {
 
-    const {setToken} = useContext(AppContext);
+    const {token, setToken, user} = useContext(AppContext);
     
     const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ export default function Login() {
             if(res.status === 200){
                 localStorage.setItem('token', res.data.token)
                 setToken(res.data.token);
-                navigate('/dashboard')
+                // navigate('/dashboard')
             }
         }catch(err){
             setErrors(err.response.data.errors);
@@ -34,6 +34,12 @@ export default function Login() {
             setProcessing(false);
         }
     }
+
+    useEffect(() => {
+        if (token && user) {
+            navigate("/dashboard");
+        }
+    }, [token, user, navigate]);
 
     return (
         <>

@@ -1,32 +1,31 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 
-export const AppContext = createContext()
+export const AppContext = createContext();
 
-export default function AppProvider({children}){
-
+export default function AppProvider({ children }) {
     const [loading, setLoading] = useState(true);
-    const [token, setToken] = useState(localStorage.getItem('token'));
+    const [token, setToken] = useState(localStorage.getItem("token"));
     const [user, setUser] = useState(null);
 
-    const getUser = async () => {
-        try{
-            const res = await axios.get('/api/user', {
+    const getUser = useCallback(async () => {
+        try {
+            const res = await axios.get("/api/user", {
                 headers: {
                     Authorization: `Bearer ${token}`,
-                }
+                },
             });
-            if(res.status === 200){
-                setUser(res.data)
+            if (res.status === 200) {
+                setUser(res.data);
             }
-        }catch(err){
+        } catch (err) {
             console.error("Failed to fetch user:", err);
             setUser(null);
             setToken(null);
-        }finally{
+        } finally {
             setLoading(false);
         }
-    }
+    }, [token]); 
 
     useEffect(() => {
         if (token) {
@@ -34,13 +33,11 @@ export default function AppProvider({children}){
         } else {
             setLoading(false);
         }
-    }, [token]);
-    
+    }, [token, getUser]);
 
     return (
         <AppContext.Provider value={{ token, setToken, user, setUser }}>
             {loading ? <div>Loading...</div> : children}
         </AppContext.Provider>
     );
-    
 }

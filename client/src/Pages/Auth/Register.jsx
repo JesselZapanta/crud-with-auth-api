@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../Context/AppContext";
 
@@ -14,7 +14,7 @@ export default function Register() {
         password_confirmation: "",
     });
 
-    const { setToken} = useContext(AppContext)
+    const { token, setToken, user } = useContext(AppContext)
 
     const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ export default function Register() {
             if (res.status === 200) {
                 localStorage.setItem('token', res.data.token);
                 setToken(res.data.token);
-                navigate('/');
+                // navigate("/dashboard");
             }
         } catch (err) {
             setErrors(err.response.data.errors);
@@ -36,6 +36,12 @@ export default function Register() {
             setProcessing(false);
         }
     };
+
+    useEffect(() => {
+        if (token && user) {
+            navigate("/dashboard");
+        }
+    }, [token, user, navigate]);
 
     return (
         <>
