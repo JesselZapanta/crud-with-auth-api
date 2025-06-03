@@ -14,9 +14,19 @@ export default function Layout() {
                         Home
                     </Link>
                     {user ? (
-                        <Link to="/dashboard" className="nav-link">
-                            Dashboard
-                        </Link>
+                        user.role === 0 ? (
+                            <Link to="/admin/dashboard" className="nav-link">
+                                Dashboard
+                            </Link>
+                        ) : user.role === 1 ? (
+                            <Link to="/user/dashboard" className="nav-link">
+                                Dashboard
+                            </Link>
+                        ) : (
+                            <Link to="/unauthorized" className="nav-link">
+                                Unknown Role
+                            </Link>
+                        )
                     ) : (
                         <Link to="/login" className="nav-link">
                             Login

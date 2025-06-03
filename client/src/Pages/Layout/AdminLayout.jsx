@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import Logout from "../Auth/Logout";
 
-export default function AuthenticatedLayout() {
+export default function AdminLayout() {
     return (
         <>
             <div className="bg-blue-900">
@@ -10,12 +10,14 @@ export default function AuthenticatedLayout() {
                         <Link to="/" className="nav-link">
                             Home
                         </Link>
-                        <Link to="/dashboard" className="nav-link">
+
+                        <Link to="/admin/dashboard" className="nav-link">
                             Dashboard
                         </Link>
                         <Link to="/user-management" className="nav-link">
                             User Management
                         </Link>
+
                     </div>
                     <Logout />
                 </div>

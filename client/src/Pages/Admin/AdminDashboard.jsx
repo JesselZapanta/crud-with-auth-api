@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../../Context/AppContext";
 
-export default function Dashboard() {
+export default function AdminDashboard() {
     const { user } = useContext(AppContext);
     if (!user) return null;
     return (

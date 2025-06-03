@@ -13,7 +13,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::middleware(['auth:sanctum'])->group(function() {
+Route::middleware(['auth:sanctum', 'admin'])->group(function() {
     Route::get('/admin/user', [AdminUserController::class, 'index']);
     Route::get('/admin/user/show/{id}', [AdminUserController::class, 'show']);
     Route::post('/admin/user/store', [AdminUserController::class, 'store']);
