@@ -14,9 +14,10 @@ class AdminUserController extends Controller
 {
     public function index()
     {
-        return User::where('id', '!=', Auth()->user()->id)
-        ->orderBy('id', 'desc')
-        ->get();
+        // return User::where('id', '!=', Auth()->user()->id)
+        // ->orderBy('id', 'desc')
+        // ->get();
+        return User::all();
     }
 
     public function store(Request $request)

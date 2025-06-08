@@ -20,3 +20,5 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function() {
     Route::put('/admin/user/update/{id}', [AdminUserController::class, 'update']);
     Route::delete('/admin/user/destroy/{id}', [AdminUserController::class, 'destroy']);
 });
+
+Route::get('/test/user', [AdminUserController::class, 'index']);

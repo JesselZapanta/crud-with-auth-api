@@ -38,9 +38,11 @@ export default function Login() {
     useEffect(() => {
         if (token && user) {
             if (user.role === 0) {
-                navigate("/admin/dashboard");
+                // navigate("/admin/dashboard");
+                console.log(user.role);
             } else if (user.role === 1) {
-                navigate("/user/dashboard");
+                // navigate("/user/dashboard");
+                console.log(user.role);
             } else {
                 navigate("/unauthorized");
             }
